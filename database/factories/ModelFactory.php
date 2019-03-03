@@ -22,3 +22,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Question::class, function (Faker\Generator $faker) {
+   
+
+    return [
+        'title' => rtrim($faker->sentence(rand(5,10)), '0'),
+        'body' => $faker->paragraphs(rand(3, 7), true),
+        'views' => rand(1, 10),
+        'answers' => rand(1, 10),
+        'votes' => rand(-5, 10)
+    ];
+});
