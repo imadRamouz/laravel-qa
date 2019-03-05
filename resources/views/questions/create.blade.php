@@ -15,20 +15,20 @@
               <div class="panel-body">
                  <form action="{{ route('questions.store') }}" method="POST">
                     {{csrf_field()}}
-                   <div class="form-group">
+                   <div class="form-group {{$errors->has('title') ? 'has-error' : ''}}">
                      <label for="question-title">Question Title: </label>
-                     <input type="text" class="form-control {{$errors->has('title') ? 'is-invalid' : ''}}" name="title" id="question-title">
+                     <input type="text" class="form-control" value="{{ old('title')}}" name="title" id="question-title">
                      @if($errors->has('title'))
-                      <div class="invalid-feedback">
+                      <div class="invalid-feedback text-danger">
                         <strong>{{$errors->first('title')}}</strong>
                       </div>
                      @endif
                    </div>
-                   <div class="form-group">
+                   <div class="form-group {{$errors->has('body') ? 'has-error' : ''}}">
                      <label for="question-body">Question Explanation: </label>
-                     <textarea name="body" id="question-body" rows="10" class="form-control {{$errors->has('body') ? 'is-invalid' : ''}}"></textarea> 
+                     <textarea value="{{ old('title')}}" name="body" id="question-body" rows="10" class="form-control "></textarea> 
                      @if($errors->has('body'))
-                      <div class="invalid-feedback">
+                      <div class="invalid-feedback text-danger">
                         <strong>{{$errors->first('body')}}</strong>
                       </div>
                      @endif

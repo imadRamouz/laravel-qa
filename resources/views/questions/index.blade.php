@@ -14,6 +14,7 @@
 
                 <div class="panel-body">
                    <div class="row">
+                        @include('inc.messages')
                         @if(count($questions) > 0)
                             @foreach($questions as $question)
                        <div class="col-md-1 text-center">
