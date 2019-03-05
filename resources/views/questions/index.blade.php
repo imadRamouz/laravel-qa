@@ -34,12 +34,16 @@
                                 <div class="flex">
                                     <h2><a href="{{$question->url}}">{{$question->title}}</a></h2>
                                     <div class="flex">
-                                        <a href="{{route('questions.edit', $question->id)}}" class="btn btn-info"  style="margin: 5px;">Edit</a>
-                                        <form action="{{ route('questions.destroy', $question->id) }}" method="POST">
-                                            {{ method_field('DELETE') }}
-                                            {{csrf_field()}}
-                                           <button type="submit" onclick="return confirm('Are you sure!!');" class="btn btn-danger">Delete</button>
-                                         </form>
+                                        @if (Auth::user()->can('update-question', $question))
+                                            <a href="{{route('questions.edit', $question->id)}}" class="btn btn-info"  style="margin: 5px;">Edit</a>
+                                        @endif
+                                        @if (Auth::user()->can('delete-question', $question))
+                                            <form action="{{ route('questions.destroy', $question->id) }}" method="POST">
+                                                {{ method_field('DELETE') }}
+                                                {{csrf_field()}}
+                                               <button type="submit" onclick="return confirm('Are you sure!!');" class="btn btn-danger">Delete</button>
+                                             </form>
+                                        @endif
                                     </div>
                                 </div>
                                 <p class="lead">
