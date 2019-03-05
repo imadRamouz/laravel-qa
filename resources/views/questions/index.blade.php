@@ -8,15 +8,36 @@
                 <div class="panel-heading">All Questions</div>
 
                 <div class="panel-body">
-                   @if(count($questions) > 0)
-                        @foreach($questions as $question)
+                   <div class="row">
+                        @if(count($questions) > 0)
+                            @foreach($questions as $question)
+                       <div class="col-md-1 text-center">
+                           <div class="vote">
+                               <strong>{{$question->votes}}</strong> {{str_plural('vote', $question->votes)}}
+                           </div>
+                           <div class="status {{$question->status}}">
+                               <strong>{{$question->answers}}</strong> {{str_plural('answer', $question->answers)}}
+                           </div>
+                           <div class="view">
+                               {{$question->views}} {{str_plural('view', $question->views)}}
+                           </div>
+                       </div>
+                       <div class="col-md-11">
+                           
                             <div class="well">
-                                <h2>{{$question->title}}</h2>
+                                <h2><a href="{{$question->url}}">{{$question->title}}</a></h2>
+                                <p class="lead">
+                                Asked By <a href="{{$question->user->url}}">{{$question->user->name}}</a>
+                                <small>{{$question->created_date}}</small>
+                                </p>
                                 <p>{{str_limit($question->body, 250)}}</p>
-                                <small>{{$question->created_at}}</small>
+                                
                             </div>
+                              
+                       </div>
                         @endforeach
-                   @endif
+                    @endif
+                   </div>
                 </div>
                 <div class="text-center">{{$questions->links()}}</div>
             </div>
