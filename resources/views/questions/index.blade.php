@@ -33,8 +33,13 @@
                             <div class="well">
                                 <div class="flex">
                                     <h2><a href="{{$question->url}}">{{$question->title}}</a></h2>
-                                    <div>
-                                        <a href="{{route('questions.edit', $question->id)}}" class="btn btn-info">Edit</a>
+                                    <div class="flex">
+                                        <a href="{{route('questions.edit', $question->id)}}" class="btn btn-info"  style="margin: 5px;">Edit</a>
+                                        <form action="{{ route('questions.destroy', $question->id) }}" method="POST">
+                                            {{ method_field('DELETE') }}
+                                            {{csrf_field()}}
+                                           <button type="submit" onclick="return confirm('Are you sure!!');" class="btn btn-danger">Delete</button>
+                                         </form>
                                     </div>
                                 </div>
                                 <p class="lead">
