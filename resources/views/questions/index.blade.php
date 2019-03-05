@@ -31,7 +31,12 @@
                        <div class="col-md-11">
                            
                             <div class="well">
-                                <h2><a href="{{$question->url}}">{{$question->title}}</a></h2>
+                                <div class="flex">
+                                    <h2><a href="{{$question->url}}">{{$question->title}}</a></h2>
+                                    <div>
+                                        <a href="{{route('questions.edit', $question->id)}}" class="btn btn-info">Edit</a>
+                                    </div>
+                                </div>
                                 <p class="lead">
                                 Asked By <a href="{{$question->user->url}}">{{$question->user->name}}</a>
                                 <small>{{$question->created_date}}</small>
