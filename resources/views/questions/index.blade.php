@@ -5,7 +5,12 @@
     <div class="row">
         <div class="col-md-12 ">
             <div class="panel panel-default">
-                <div class="panel-heading">All Questions</div>
+                <div class="panel-heading flex">
+                <h2>All Questions</h2>
+                <div class="">
+                    <a href="{{route("questions.create")}}" class="btn btn-info">Ask Question</a>
+                </div>
+                </div>
 
                 <div class="panel-body">
                    <div class="row">
