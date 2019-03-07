@@ -22,14 +22,14 @@
                                <strong>{{$question->votes}}</strong> {{str_plural('vote', $question->votes)}}
                            </div>
                            <div class="status {{$question->status}}">
-                               <strong>{{$question->answers}}</strong> {{str_plural('answer', $question->answers)}}
+                               <strong>{{$question->answers_count}}</strong> {{str_plural('answer', $question->answers_count)}}
                            </div>
                            <div class="view">
                                {{$question->views}} {{str_plural('view', $question->views)}}
                            </div>
                        </div>
                        <div class="col-md-11">
-                           
+
                             <div class="well">
                                 <div class="flex">
                                     <h2><a href="{{$question->url}}">{{$question->title}}</a></h2>
@@ -51,9 +51,9 @@
                                 <small>{{$question->created_date}}</small>
                                 </p>
                                 <p>{{str_limit($question->body, 250)}}</p>
-                                
+
                             </div>
-                              
+
                        </div>
                         @endforeach
                     @endif
